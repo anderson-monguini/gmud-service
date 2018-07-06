@@ -43,4 +43,13 @@ public class GmudController {
 	
 	}
 	
+	@GetMapping("/cadastro")
+	public ModelAndView testecadastro () {
+		
+	ModelAndView mav = new ModelAndView("cadastro");
+	
+	return mav;
+	
+	}
+	
 }
