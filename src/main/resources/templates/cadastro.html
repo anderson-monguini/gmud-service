@@ -41,7 +41,16 @@
 	    left: 50%;
 	    transform: translateY(-50%) translateX(-50%);
 	  }
-
+	  .border-class {
+	  	border-radius: 25px;
+		border:thin black solid;
+		margin:20px;
+		padding:20px;
+	  }
+	  h2 {
+    	text-align: center;
+	  }
+	  	  
     </style>
 
   </head>
@@ -74,39 +83,58 @@
           </ul>
         </div>
       </div>
-    </nav>
+    </nav>	
 
-    <!-- Page Content -->
-    <div class="center-form">
-	<form action="/action_page.php">
-  		<div class="form-group">
-    		<label for="codigo">Código GMUD:</label>
-    		<input type="codigo" class="form-control" id="codigo">
+	<!-- Page Content -->
+	
+	<div class="center-form">
+	
+	<form class="border-class" action="http://localhost:8090/service/gmud" method="post">
+		
+		<h2>Inserir dados para cadastro	</h2>
+		<p></p>
+		
+  		<div class="row">
+    		<div class= "form-group col-md-6" "col">
+    			<label for="codigo">Código GMUD:</label>
+      			<input type="text" id="codigo" class="form-control">
+    		</div>
+    		<div class= "form-group col-md-6" "col">
+    			<label for="ds_gmud">Descrição:</label>
+     			<input type="text" id="nome_gmud" class="form-control">
+   			</div>
   		</div>
- 		<div class="form-group">
-    		<label for="ds_gmud">Nome GMUD:</label>
-    		<input type="ds_gmud" class="form-control" id="ds_gmud">
+  			
+  		<div class="row">
+    		<div class= "form-group col-md-6" "col">
+    			<label for="fornecedor">Fábrica:</label>
+    			<input type="text" id="fornecedor" class="form-control">
+    		</div>
+    		<div class= "form-group col-md-6" "col">
+    			<label for="sistema">Sistema:</label>
+     			<input type="text" id="sistema" class="form-control">
+   			</div>
   		</div>
- 		<div class="form-group">
-    		<label for="fornecedor">Fábrica:</label>
-    		<input type="fornecedor" class="form-control" id="fornecedor">
+  		
+  		<div class="row">
+    		<div class= "form-group col-md-6" "col">
+    			<label for="recurso">Recurso:</label>
+    			<input type="text" id="recurso" class="form-control">
+    		</div>
+    		<div class= "form-group col-md-6" "col">
+    			<label for="data">Data:</label>
+     			<input type="date" id="data" class="form-control">
+   			</div>	
   		</div>
-  		<div class="form-group">
-    		<label for="sistema">Sistema:</label>
-    		<input type="sistema" class="form-control" id="sistema">
-  		</div>
-  		<div class="form-group">
-    		<label for="recurso">Sistema:</label>
-    		<input type="recurso" class="form-control" id="recurso">
-  		</div>
-  		<div class="form-group">
-    		<label for="data">Data GMUD:</label>
-    		<input type="date" class="form-control" id="data" name="data">
-  		</div>   
-  		<button type="submit" class="btn btn-default">Submit</button>
+  		
+  		<div class="radio">
+  				<label><input type="radio" value='TRUE' name="ativo">Ativo</label>
+		</div>
+		
+		<button type="submit" class="btn btn-dark">Salvar</button> 			
 	</form>
 	</div>
-
+	
   </body>
 
 </html>
