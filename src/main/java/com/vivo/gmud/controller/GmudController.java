@@ -52,4 +52,15 @@ public class GmudController {
 	
 	}
 	
+	@GetMapping("/consulta")
+	public ModelAndView telaconsulta () {
+		
+	ModelAndView mav = new ModelAndView("consulta");
+	
+	return mav;
+	
+	}
+	
+	
+	
 }

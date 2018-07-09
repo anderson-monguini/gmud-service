@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Menu</title>
+    <title>Consulta de GMUD</title>
 
     <!-- Bootstrap core CSS -->
     <link href= "/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
@@ -25,7 +25,32 @@
           padding-top: 56px;
         }
       }
-
+		
+		body.center-form {
+	    min-height: 100vh;
+	  }
+	
+	  	div.center-form {
+	    position: relative;
+	    min-height: 100vh;
+	  }
+	
+	  	div.center-form > form {
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    transform: translateY(-50%) translateX(-50%);
+	  }
+	  .border-class {
+	  	border-radius: 25px;
+		border:thin black solid;
+		margin:20px;
+		padding:20px;
+	  }
+	  h3 {
+    	text-align: center;
+	  }
+	  	  
     </style>
 
   </head>
@@ -41,13 +66,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-           
             <li class="nav-item active">
-              	<a class="nav-link" href="consulta">Consulta
+              <a class="nav-link" href="consulta"0>Consulta
                 <span class="sr-only">(current)</span>
-              	</a>
+              </a>
             </li>
-           
             <li class="nav-item">
               <a class="nav-link" href="cadastro">Cadastro</a>
             </li>
@@ -60,21 +83,26 @@
           </ul>
         </div>
       </div>
-    </nav>
+    </nav>	
 
-    <!-- Page Content -->
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <h1 class="mt-5">Sistema de Cadastro de GMUD</h1>
-          <p class="lead">Devemos utilzar este portal para cadastrar as GMUDs que entraram durante as releases</p>
-          <ul class="list-unstyled">
-            <li>OSS. DEV.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
+	<!-- Page Content -->
+	
+	<div class="center-form">
+	
+	<form class="border-class" action="http://localhost:8090/service/gmud/" method="get">
+		
+		<h3>Inserir dados para buscar GMUD</h3>
+		<p></p>
+		<p></p>
+  		<div class= "form-group col-md-6">
+    			<label for="codigo">Código GMUD:</label>
+     			<input type="codigo"><br>
+   		</div>
+  				
+		<button type="submit" class="btn btn-dark">Buscar</button> 			
+	</form>
+	</div>
+	
   </body>
 
 </html>
