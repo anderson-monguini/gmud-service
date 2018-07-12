@@ -25,13 +25,11 @@ public class GmudService {
 	@Autowired
 	private GmudRepository gmudRepository;
 	
-	//@RequestMapping (value = "/cadastro", method = RequestMethod.POST)
 	
 	@PostMapping ("/cadastro")
 	public ModelAndView salvarGmud (GmudModel gmud, ModelAndView request){
 		
-			System.out.println(gmud.getNome_gmud());
-			
+	
 			try {
 				
 				this.gmudRepository.save(gmud);
