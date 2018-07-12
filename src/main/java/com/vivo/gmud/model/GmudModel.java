@@ -1,14 +1,22 @@
 package com.vivo.gmud.model;
 
 import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+
 @Table(name="tb_gmud")
 @Entity
 public class GmudModel {
+	
+	public GmudModel () {
+		
+	}
 	
 	@Id
 	@Column (name="id_gmud")
@@ -26,11 +34,13 @@ public class GmudModel {
 	@Column (name="ds_recurso")
 	private String recurso;
 	
+	@DateTimeFormat (pattern = "yyyy-MM-dd")
 	@Column (name="data_gmud")
 	private LocalDate data;
-	
+	/**
 	@Column (name="fl_ativo")
 	private boolean ativo;
+	**/
 	
 	public Integer getCodigo() {
 		return codigo;
@@ -80,6 +90,7 @@ public class GmudModel {
 		this.data = data;
 	}
 
+	/**
 	public boolean isAtivo() {
 		return ativo;
 	}
@@ -87,5 +98,6 @@ public class GmudModel {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
+	**/
 	
 }

@@ -1,46 +1,52 @@
-package com.vivo.gmud.service;
+	package com.vivo.gmud.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.vivo.gmud.model.GmudModel;
 import com.vivo.gmud.model.ResponseModel;
 import com.vivo.gmud.repository.GmudRepository;
 
 
-@RestController
+@Controller
 @RequestMapping("/service")
 public class GmudService {
 
 	@Autowired
 	private GmudRepository gmudRepository;
 	
-	/**Salvar novo registro para GMUD*/
+	//@RequestMapping (value = "/cadastro", method = RequestMethod.POST)
 	
-	@RequestMapping (value = "/gmud", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_UTF8_VALUE, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public @ResponseBody ResponseModel salvar(@RequestBody GmudModel gmud){
+	@PostMapping ("/cadastro")
+	public ModelAndView salvarGmud (GmudModel gmud, ModelAndView request){
 		
-		try {
+			System.out.println(gmud.getNome_gmud());
 			
-			this.gmudRepository.save(gmud);
-			
-			return new ResponseModel(1, "Registro salvo com sucesso!");
-			
-		}catch (Exception e) {
-			
-			return new ResponseModel (0,e.getMessage());
+			try {
+				
+				this.gmudRepository.save(gmud);
+				
+				//return new ResponseModel(1, "Registro salvo com sucesso!");
+				return new ModelAndView("index");
+						
+			}catch (Exception e) {
+				
+				System.err.println(e);
+				return new ModelAndView("index");
+				//return new ResponseModel (0,e.getMessage());
+			}
+		
 		}
-	
-	}
-	
 	
 	/**Atualizar registro de GMUD **/
 	
@@ -67,7 +73,6 @@ public class GmudService {
 		return this.gmudRepository.findAll();
 	}
 	
-	
 	/**consultar as gmuds pelo código**/
 	
 	@RequestMapping(value="/gmud/{codigo}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -76,7 +81,6 @@ public class GmudService {
 		return this.gmudRepository.findById(codigo);
 	}
 		
-	
 	/**excluir gmuds pelo código**/
 	
 	@RequestMapping(value="/gmud/{codigo}", method = RequestMethod.DELETE, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)

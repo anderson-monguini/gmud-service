@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.vivo.gmud.model.GmudModel;
+
 @Controller
 public class GmudController {
 	
@@ -47,6 +49,8 @@ public class GmudController {
 	public ModelAndView testecadastro () {
 		
 	ModelAndView mav = new ModelAndView("cadastro");
+	
+	mav.addObject("myVal",new GmudModel());
 	
 	return mav;
 	
