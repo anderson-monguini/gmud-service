@@ -51,20 +51,19 @@ public class GmudController {
 	ModelAndView mav = new ModelAndView("cadastro");
 	
 	mav.addObject("myVal",new GmudModel());
-	
+		
 	return mav;
 	
 	}
 	
+	/*
 	@GetMapping("/consulta")
 	public ModelAndView telaconsulta () {
-		
+	
 	ModelAndView mav = new ModelAndView("consulta");
 	
 	return mav;
 	
 	}
-	
-	
-	
+	*/
 }

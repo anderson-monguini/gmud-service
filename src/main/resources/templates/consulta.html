@@ -17,9 +17,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="consulta"0>Consulta
-                <span class="sr-only">(current)</span>
-              </a>
+              <a class="nav-link" href="consulta"0>Consulta<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="cadastro">Cadastro</a>
@@ -38,21 +36,35 @@
 	<!-- Page Content -->
 	
 	<div class="center-form">
-	
-	<form class="border-class" action="http://localhost:8090/service/gmud/" method="get">
-		
-		<h3>Inserir dados para buscar GMUD</h3>
-		<p></p>
-		<p></p>
-  		<div class= "form-group col-md-6">
-    			<label for="codigo">Código GMUD:</label>
-     			<input type="codigo"><br>
-   		</div>
-  				
-		<button type="submit" class="btn btn-dark">Buscar</button> 			
-	</form>
+	<form class="border-class">
+		<h2> Lista de Gmuds</h2>
+		<div  th:if="${not #lists.isEmpty(listagmud)}">
+			<table width="50" align="right" class="table">
+			  <thead class="thead-dark">
+				<tr>
+					<th>Codigo GMUD</th>
+					<th>Descricao</th>
+					<th>Fabrica</th>
+					<th>Sistema</th>
+					<th>Recurso</th>
+					<th>Data</th>
+				</tr>
+			  </thead>
+				<tbody>
+					<tr th:each="gmud : ${listagmud}">
+						<td><a th:href="${'/alterar/' + gmud.codigo}" href="#" th:text="${gmud.codigo}"></a></td>
+						<td th:text="${gmud.nome_gmud}"></td>
+						<td th:text="${gmud.fornecedor}"></td>
+						<td th:text="${gmud.sistema}"></td>
+						<td th:text="${gmud.recurso}"></td>
+						<td th:text="${gmud.data}"></td>
+					</tr>
+				</tbody>		
+			</table>
+		</div>
+		</form>
 	</div>
-	
+
   </body>
 
 </html>

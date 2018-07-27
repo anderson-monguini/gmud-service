@@ -15,4 +15,5 @@ public interface GmudRepository extends Repository<GmudModel, Integer> {
 	List<GmudModel> findAll();
  
 	GmudModel findById(Integer id);
+
 }

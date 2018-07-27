@@ -26,25 +26,6 @@ public class GmudService {
 	private GmudRepository gmudRepository;
 	
 	
-	@PostMapping ("/cadastro")
-	public ModelAndView salvarGmud (GmudModel gmud, ModelAndView request){
-		
-	
-			try {
-				
-				this.gmudRepository.save(gmud);
-				
-				//return new ResponseModel(1, "Registro salvo com sucesso!");
-				return new ModelAndView("index");
-						
-			}catch (Exception e) {
-				
-				System.err.println(e);
-				return new ModelAndView("index");
-				//return new ResponseModel (0,e.getMessage());
-			}
-		
-		}
 	
 	/**Atualizar registro de GMUD **/
 	
