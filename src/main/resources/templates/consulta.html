@@ -19,24 +19,14 @@
             <li class="nav-item active">
               <a class="nav-link" href="/consulta">Consulta<span class="sr-only">(current)</span></a>
             </li>
-            
-            <!--
-            <li class="nav-item">
-              <a class="nav-link" href="cadastro">Cadastro</a>
-            </li>
-             -->
-            
+      
             <li class="nav-item dropdown">
     			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
 			    <div class="dropdown-menu">
-				      <a class="dropdown-item" href="cadastro">Gmuds</a>
-				      <a class="dropdown-item" href="fornecedor">Fornecedor</a>
+				      <a class="dropdown-item" href="/cadastro">Gmuds</a>
+				      <a class="dropdown-item" href="/fornecedor">Fornecedor</a>
 				      <a class="dropdown-item" href="/recurso">Recurso</a>
-				      <a class="dropdown-item" href="/sistema">Sistema</a>
-				     
-				      <!--  <div class="dropdown-divider"></div> 
-				      <a class="dropdown-item" href="#">Separated link</a>
-				      -->
+				      <a class="dropdown-item" href="/sistema">Sistema</a>   
 			    </div>
 			</li>
           </ul>
@@ -62,16 +52,20 @@
 					<th>Sistema</th>
 					<th>Recurso</th>
 					<th>Data</th>
+					<th>Gerente de projeto</th>
+					<th>Observações</th>
 					</tr>
                 </thead>
                 <tbody>
 					<tr th:each="gmud : ${gmudlist}">
 						<td><a th:href="${'/cadastro/' + gmud.codigo}" href="#" th:text="${gmud.codigo}"></a></td>
 						<td th:text="${gmud.nome_gmud}"></td>
-						<td th:text="${gmud.fornecedor}"></td>
-						<td th:text="${gmud.sistema}"></td>
-						<td th:text="${gmud.recurso}"></td>
+						<td th:text="${gmud.fornecedorModel}"></td>
+						<td th:text="${gmud.sistemaModel}"></td>
+						<td th:text="${gmud.recursoModel}"></td>
 						<td th:text="${gmud.data}"></td>
+						<td th:text="${gmud.gerenteprojeto}"></td>
+						<td th:text="${gmud.observacoes}"></td>
                     </tr>
                 </tbody>
             </table>

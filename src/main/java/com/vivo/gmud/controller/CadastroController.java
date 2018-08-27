@@ -11,13 +11,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.vivo.gmud.model.GmudModel;
+import com.vivo.gmud.repository.FornecedorRepository;
 import com.vivo.gmud.repository.GmudRepository;
+import com.vivo.gmud.repository.RecursoRepository;
+import com.vivo.gmud.repository.SistemaRepository;
 
 @Controller
 public class CadastroController {
 	
 	@Autowired
 	private GmudRepository gmudRepository;
+	
+	@Autowired
+	private FornecedorRepository fornecedorRepository;
+	
+	@Autowired
+	private RecursoRepository recursoRepository;
+	
+	@Autowired
+	private SistemaRepository sistemaRepository;
 	
 	/**Novo registro de GMUD **/
 	
@@ -64,6 +76,12 @@ public class CadastroController {
 		ModelAndView mav = new ModelAndView("cadastro");
 		
 		mav.addObject("myVal", gmudRepository.findById(codigo));
+		
+		mav.addObject("listaFornecedor", fornecedorRepository.findAll());
+		
+		mav.addObject("listaRecurso", recursoRepository.findAll());
+		
+		mav.addObject("listaSistema", sistemaRepository.findAll());
 		
 		return mav;
 		

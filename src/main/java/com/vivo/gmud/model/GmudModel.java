@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -29,17 +31,21 @@ public class GmudModel {
 	@Column (name="ds_gmud")
 	private String nome_gmud;
 	
-	@Size(max = 50)
-	@Column (name="ds_fornecedor")
-	private String fornecedor;
+	@NotNull
+	@JoinColumn (name = "nome_fornecedor")
+	@OneToOne
+	private FornecedorModel fornecedorModel;
 	
-	@Size(max = 50)
-	@Column (name="ds_sistema")
-	private String sistema;
+	@NotNull
+	@JoinColumn (name = "ds_sistema")
+	@OneToOne	
+	private SistemaModel sistemaModel;
 	
-	@Size(max = 50)
-	@Column (name="ds_recurso")
-	private String recurso;
+	
+	@NotNull
+	@JoinColumn (name = "ds_recurso")
+	@OneToOne
+	private RecursoModel recursoModel;
 	
 	@DateTimeFormat (pattern = "yyyy-MM-dd")
 	@Column (name="data_gmud")
@@ -57,10 +63,8 @@ public class GmudModel {
 		return codigo;
 	}
 
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
-
+	//Geters e Seters
+		
 	public String getNome_gmud() {
 		return nome_gmud;
 	}
@@ -69,28 +73,28 @@ public class GmudModel {
 		this.nome_gmud = nome_gmud;
 	}
 
-	public String getFornecedor() {
-		return fornecedor;
+	public FornecedorModel getFornecedorModel() {
+		return fornecedorModel;
 	}
 
-	public void setFornecedor(String fornecedor) {
-		this.fornecedor = fornecedor;
+	public void setFornecedorModel(FornecedorModel fornecedorModel) {
+		this.fornecedorModel = fornecedorModel;
 	}
 
-	public String getSistema() {
-		return sistema;
+	public SistemaModel getSistemaModel() {
+		return sistemaModel;
 	}
 
-	public void setSistema(String sistema) {
-		this.sistema = sistema;
+	public void setSistemaModel(SistemaModel sistemaModel) {
+		this.sistemaModel = sistemaModel;
 	}
 
-	public String getRecurso() {
-		return recurso;
+	public RecursoModel getRecursoModel() {
+		return recursoModel;
 	}
 
-	public void setRecurso(String recurso) {
-		this.recurso = recurso;
+	public void setRecursoModel(RecursoModel recursoModel) {
+		this.recursoModel = recursoModel;
 	}
 
 	public LocalDate getData() {
@@ -117,4 +121,8 @@ public class GmudModel {
 		this.observacoes = observacoes;
 	}
 
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}	
+	
 }

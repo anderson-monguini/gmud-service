@@ -23,7 +23,7 @@ public class ListGmudController {
     private static final int INITIAL_PAGE = 0;
     private static final int INITIAL_PAGE_SIZE = 10;
     private static final int[] PAGE_SIZES = { 5, 10};
-
+    
     @Autowired
     ConsultaRepository consultarepository;
     GmudRepository gmudrepository;
@@ -59,9 +59,9 @@ public class ListGmudController {
         mav.addObject("pageSizes", PAGE_SIZES);
         
         mav.addObject("pager", pager);
-        
+               
         return mav;
-    //Nova Branch
+
 	}
 	
 }

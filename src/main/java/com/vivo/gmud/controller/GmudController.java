@@ -10,6 +10,8 @@ import com.vivo.gmud.model.GmudModel;
 import com.vivo.gmud.model.RecursoModel;
 import com.vivo.gmud.model.SistemaModel;
 import com.vivo.gmud.repository.FornecedorRepository;
+import com.vivo.gmud.repository.RecursoRepository;
+import com.vivo.gmud.repository.SistemaRepository;
 
 @Controller
 public class GmudController {
@@ -17,7 +19,12 @@ public class GmudController {
 	@Autowired
 	private FornecedorRepository fornecedorRepository;
 	
+	@Autowired
+	private RecursoRepository recursoRepository;
 	
+	@Autowired
+	private SistemaRepository sistemaRepository;
+		
 	@GetMapping("/menu")
 	public ModelAndView testemenu () {
 		
@@ -33,6 +40,12 @@ public class GmudController {
 	ModelAndView mav = new ModelAndView("cadastro");
 	
 	mav.addObject("myVal",new GmudModel());
+	
+	mav.addObject("listaFornecedor", fornecedorRepository.findAll());
+	
+	mav.addObject("listaRecurso", recursoRepository.findAll());
+	
+	mav.addObject("listaSistema", sistemaRepository.findAll());
 		
 	return mav;
 	
@@ -64,7 +77,6 @@ public class GmudController {
 	@GetMapping("/sistema")
 	public ModelAndView cadastrosistema() {
 	
-		
 	ModelAndView mav = new ModelAndView("sistema");
 	
 	mav.addObject("mySistema",new SistemaModel());

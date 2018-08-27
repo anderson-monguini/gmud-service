@@ -10,7 +10,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="menu">CADASTRO DE GMUD</a>
+        <a class="navbar-brand" href="/menu">CADASTRO DE GMUD</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,14 +21,7 @@
               <a class="nav-link" href="/consulta">Consulta</a>
             </li>
             
-            
-            <!--
-            <li class="nav-item">
-              <a class="nav-link" href="cadastro">Cadastro</a>
-            </li>
-             -->
-            
-            <li class="nav-item dropdown">
+           <li class="nav-item dropdown">
     			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
 			    <div class="dropdown-menu">
 				      <a class="dropdown-item" href="/cadastro">Gmuds</a>
@@ -45,53 +38,85 @@
 
 	<!-- Page Content -->
 	
-	<div class="align-justify">
+	<div class="container align-middle" style="width:60%; border:1px solid #333; border-radius:23px; margin-top:30px ">
 	
-	<form class="border-class" th:object="${myVal}" th:action="@{/cadastrar}" method="post" input width="90%" >
-			
+	<form class="form-group" th:object="${myVal}" th:action="@{/cadastrar}" method="post">
+		
+		<p></p>	
 		<h2>Inserir dados para cadastro	</h2>
 		<p></p>
-		
-  		<div class="row">
-    		<div class= "form-group col-md-6" "col">
+		  
+		<div class="row">  		
+    		<div class="col">
     			<label for="codigo">Codigo GMUD:</label>
       			<input th:field="*{codigo}" type="text" id="codigo" name="codigo" class="form-control">
     		</div>
     		
-    		<div class= "form-group col-md-6" "col">
-    			<label for="gmud">Descricao:</label>
-     			<input th:field="*{nome_gmud}" type="text" id="nome_gmud" class="form-control">
-   			</div>
-  		</div>
-  		
-  		
-  		<div class="row">
-    		<div class= "form-group col-md-6" "col">
-    			<label for="fornecedor">Fabrica:</label>
-    			<input th:field="*{fornecedor}" type="text" id="fornecedor" class="form-control">
-     		</div>
-     		
-        		
-    		<div class= "form-group col-md-6" "col">
-    			<label for="sistema">Sistema:</label>
-     			<input th:field="*{sistema}" type="text" id="sistema" class="form-control">
-   			</div>
-  		</div>
-  		
-  		<div class="row">
-    		<div class= "form-group col-md-6" "col">
-    			<label for="recurso">Recurso:</label>
-    			<input th:field="*{recurso}" type="text" id="recurso" class="form-control">
-    		</div>
-    		 
-    		<div class= "form-group col-md-6" "col">
+    		<div class="col">
     			<label for="data">Data:</label>
      			<input th:value="*{data}" th:field="*{data}" type="date" id="data" class="form-control">
    			</div>	
-   			 
-  		</div> 
-  		   
-		<input type="submit" class="btn btn-dark"></input> 			
+   		</div>
+   		    
+   		    <div class="form-group">
+    			<label for="gmud">Descricao:</label>
+     			<input th:field="*{nome_gmud}" type="text" id="nome_gmud" class="form-control">
+   			</div>	
+  		
+  		<div class="row">  		
+    		<div class="col">
+    		<label for="fornecedor">Fornecedor Sistema:</label>
+    			<select class="form-control" id="fornecedor" th:field="*{fornecedorModel}">
+	            	<option value=""></option>
+	            		<option th:each="fornecedor : ${listaFornecedor}"
+	            		th:value="${fornecedor.getId_fonecedor()}"
+	            		th:utext="${fornecedor.getNome_fornecedor()}"
+	            		/>
+            	</select>
+            	<small id="description" class="form-text text-muted">Selecionar a fábrica correta para o Sistema</small>	
+   			</div>
+     		        		
+    		<div class="col">
+    			<label for="sistema">Sistema:</label>
+	    			<select class="form-control" id="sistema" th:field="*{sistemaModel}">
+		            <option value=""></option>
+		            		<option th:each="sistema : ${listaSistema}"
+		            		th:value="${sistema.getId_sistema()}"
+		            		th:utext="${sistema.getNome_sistema()}"
+		            		/>
+	            	</select>
+            	<small id="description" class="form-text text-muted">Selecionar o Sistema</small>	
+ 			</div>
+  	  	</div>
+  	  	
+  	  	<div class="row"> 
+    		<div class="col">
+	    		<label for="recurso">Recurso:</label>
+		    		<select class="form-control" id="recurso" th:field="*{recursoModel}">
+			            <option value=""></option>
+			            		<option th:each="recurso : ${listaRecurso}"
+			            		th:value="${recurso.getId_recurso()}"
+			            		th:utext="${recurso.getNome_recurso()}"
+			            		/>
+		            </select>
+	            <small id="description" class="form-text text-muted">Selecionar o Recurso</small>	
+ 			</div>
+			
+			<div class="col">
+    			<label for="gerenteprojeto">Gerente de Projeto:</label>
+     			<input th:field="*{gerenteprojeto}" type="text" id="gerenteprojeto" class="form-control">
+     			<small id="description" class="form-text text-muted">Informar qual o GP do Projeto</small>
+   			</div>
+   		</div>	 
+			
+    		<div class="form-group">
+    			<label for="observacoes">Observações:</label>
+     			<textarea class="form-control" th:field="*{observacoes}" id="observacoes" rows="3"></textarea>
+     			<small id="description" class="form-text text-muted">Adicionar informações relevantes sobre CRQ</small>
+   			</div> 			
+    		  
+		<button type="submit" class="btn btn-dark">Salvar Dados!</button>
+				
 	</form>
 		
 		<div class="error" th:if="${not #lists.isEmpty(critical)}" th:text="${critical}"></div>
