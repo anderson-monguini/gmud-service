@@ -13,7 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.vivo.gmud.model.GmudModel;
 import com.vivo.gmud.model.PagerModel;
 import com.vivo.gmud.repository.ConsultaRepository;
+import com.vivo.gmud.repository.FornecedorRepository;
 import com.vivo.gmud.repository.GmudRepository;
+import com.vivo.gmud.repository.RecursoRepository;
+import com.vivo.gmud.repository.SistemaRepository;
 
 @Controller
 public class ListGmudController {
@@ -23,6 +26,16 @@ public class ListGmudController {
     private static final int INITIAL_PAGE = 0;
     private static final int INITIAL_PAGE_SIZE = 10;
     private static final int[] PAGE_SIZES = { 5, 10};
+    
+	@Autowired
+	private FornecedorRepository fornecedorRepository;
+	
+	@Autowired
+	private RecursoRepository recursoRepository;
+	
+	@Autowired
+	private SistemaRepository sistemaRepository;
+    
     
     @Autowired
     ConsultaRepository consultarepository;
@@ -59,6 +72,12 @@ public class ListGmudController {
         mav.addObject("pageSizes", PAGE_SIZES);
         
         mav.addObject("pager", pager);
+            	
+    	mav.addObject("listaFornecedor", fornecedorRepository.findAll());
+    	
+    	mav.addObject("listaRecurso", recursoRepository.findAll());
+    	
+    	mav.addObject("listaSistema", sistemaRepository.findAll());
                
         return mav;
 

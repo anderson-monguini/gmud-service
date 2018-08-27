@@ -36,14 +36,15 @@
 
 	<!-- Page Content -->
 	
-    <div class="container align-middle" style="width:90%; border:1px solid #333; border-radius:23px; margin-top:30px ">
-          
-         <div class="page-title">
-            <h2> <span class="fa fa-arrow-circle-o-left">Consulta de GMUD</span></h2>
+    <div class="container align-middle" style="width:100%; border:1px solid #333; border-radius:23px; margin-top:20px ">
+        
+        <p></p> 
+        <div class="page-title">
+            <h2> <span class="fa fa-arrow-circle-o-left">Consultar GMUDs</span></h2>
         </div>
         
         <div class="align-middle">
-            <table class="table datatable">
+            <table class="table datatable" style="font-size:14px;">
                 <thead>
                     <tr>
 					<th>Codigo GMUD</th>
@@ -53,20 +54,18 @@
 					<th>Recurso</th>
 					<th>Data</th>
 					<th>Gerente de projeto</th>
-					<th>Observações</th>
 					</tr>
                 </thead>
                 <tbody>
 					<tr th:each="gmud : ${gmudlist}">
 						<td><a th:href="${'/cadastro/' + gmud.codigo}" href="#" th:text="${gmud.codigo}"></a></td>
 						<td th:text="${gmud.nome_gmud}"></td>
-						<td th:text="${gmud.fornecedorModel}"></td>
-						<td th:text="${gmud.sistemaModel}"></td>
-						<td th:text="${gmud.recursoModel}"></td>
+						<td th:text="${gmud.fornecedorModel.nome_fornecedor}"></td>
+	            		<td th:text="${gmud.sistemaModel.nome_sistema}"></td>
+						<td th:text="${gmud.recursoModel.nome_recurso}"></td>
 						<td th:text="${gmud.data}"></td>
 						<td th:text="${gmud.gerenteprojeto}"></td>
-						<td th:text="${gmud.observacoes}"></td>
-                    </tr>
+				   </tr>
                 </tbody>
             </table>
        	</div>
@@ -76,8 +75,7 @@
             <div>
 
 				<nav th:if="${gmudlist.totalPages != 1}" class="form-group col-md-11 pagination-centered">
-				
-  					<ul class= "pagination  justify-content-center">
+				  <ul class= "pagination  justify-content-center">
     				
 	    				<li th:class="${gmudlist.number == 0} ? disabled">
 	    				 <a class="page-link" th:href="@{/consulta/(pageSize=${selectedPageSize}, page=${gmudlist.number})}" tabindex="-1">Anterior</a>
@@ -97,7 +95,6 @@
 					    </li>
 					    
 				  </ul>
-				  
 				</nav>
             </div>
        	       	
