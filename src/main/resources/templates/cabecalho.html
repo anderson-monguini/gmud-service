@@ -15,7 +15,9 @@
 	<!-- Bootstrap core JavaScript -->
     <script src="/jquery/jquery.min.js" th:src="@{/jquery/jquery.min.js}" type="text/javascript"></script>
     <script src="/bootstrap/js/bootstrap.bundle.min.js" th:src="@{/bootstrap/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
-		
+	
+	<script src="/bootstrap/js/jquery-1.11.1.min" th:src="@{/bootstrap/js/jquery-1.11.1.min}" type="text/javascript"></script>
+	
     <!-- Custom styles for this template -->
     <style>
       body {
@@ -51,6 +53,18 @@
 	  h2 {
     	text-align: center;
 	  }
+	  
+	  
+		.pagination-centered {
+    		text-align: center;
+		}
+		.disabled {
+    		pointer-events: none;
+    		opacity: 0.5;
+		}
+		.pointer-disabled {
+    		pointer-events: none;
+		}
 	  	  
     </style>
 

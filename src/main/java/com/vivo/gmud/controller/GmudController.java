@@ -1,40 +1,22 @@
 package com.vivo.gmud.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.vivo.gmud.model.FornecedorModel;
 import com.vivo.gmud.model.GmudModel;
+import com.vivo.gmud.model.RecursoModel;
+import com.vivo.gmud.model.SistemaModel;
+import com.vivo.gmud.repository.FornecedorRepository;
 
 @Controller
 public class GmudController {
 	
-	@GetMapping("/teste")
-	public ModelAndView teste () {
-		
-	ModelAndView mav = new ModelAndView("index");
+	@Autowired
+	private FornecedorRepository fornecedorRepository;
 	
-	mav.addObject("texto", "olamundo");
-	
-	mav.addObject("texto2", "olamundo2");
-	
-	return mav;
-	
-	}
-	
-	@GetMapping("/teste/{id}")
-	public ModelAndView teste2 (@PathVariable String id) {
-		
-	ModelAndView mav = new ModelAndView("teste2");
-
-	mav.addObject("texto", id);
-	
-	mav.addObject("texto2", "olamundo2");
-	
-	return mav;
-	
-	}
 	
 	@GetMapping("/menu")
 	public ModelAndView testemenu () {
@@ -56,14 +38,41 @@ public class GmudController {
 	
 	}
 	
-	/*
-	@GetMapping("/consulta")
-	public ModelAndView telaconsulta () {
+	@GetMapping("/fornecedor")
+	public ModelAndView cadastrofornecedor () {
+		
+	ModelAndView mav = new ModelAndView("fornecedor");
 	
-	ModelAndView mav = new ModelAndView("consulta");
+	mav.addObject("myFornecedor",new FornecedorModel());
+		
+	return mav;
+	
+	}
+	
+	@GetMapping("/recurso")
+	public ModelAndView cadastrorecurso () {
+		
+	ModelAndView mav = new ModelAndView("recurso");
+	
+	mav.addObject("myRecurso",new RecursoModel());
+		
+	return mav;
+	
+	}
+	
+
+	@GetMapping("/sistema")
+	public ModelAndView cadastrosistema() {
+	
+		
+	ModelAndView mav = new ModelAndView("sistema");
+	
+	mav.addObject("mySistema",new SistemaModel());
+	
+	mav.addObject("listaFornecedor", fornecedorRepository.findAll());
 	
 	return mav;
 	
 	}
-	*/
+
 }

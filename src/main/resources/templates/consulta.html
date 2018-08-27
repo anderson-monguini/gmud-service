@@ -10,24 +10,35 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="menu">CADASTRO DE GMUD</a>
+        <a class="navbar-brand" href="/menu">CADASTRO DE GMUD</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="consulta"0>Consulta<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/consulta">Consulta<span class="sr-only">(current)</span></a>
             </li>
+            
+            <!--
             <li class="nav-item">
               <a class="nav-link" href="cadastro">Cadastro</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="consulta">Alterar</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Deletar</a>
-            </li>
+             -->
+            
+            <li class="nav-item dropdown">
+    			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
+			    <div class="dropdown-menu">
+				      <a class="dropdown-item" href="cadastro">Gmuds</a>
+				      <a class="dropdown-item" href="fornecedor">Fornecedor</a>
+				      <a class="dropdown-item" href="/recurso">Recurso</a>
+				      <a class="dropdown-item" href="/sistema">Sistema</a>
+				     
+				      <!--  <div class="dropdown-divider"></div> 
+				      <a class="dropdown-item" href="#">Separated link</a>
+				      -->
+			    </div>
+			</li>
           </ul>
         </div>
       </div>
@@ -35,36 +46,68 @@
 
 	<!-- Page Content -->
 	
-	<div class="center-form">
-	<form class="border-class">
-		<h2> Lista de Gmuds</h2>
-		<div  th:if="${not #lists.isEmpty(listagmud)}">
-			<table width="50" align="right" class="table">
-			  <thead class="thead-dark">
-				<tr>
+    <div class="container align-middle" style="width:90%; border:1px solid #333; border-radius:23px; margin-top:30px ">
+          
+         <div class="page-title">
+            <h2> <span class="fa fa-arrow-circle-o-left">Consulta de GMUD</span></h2>
+        </div>
+        
+        <div class="align-middle">
+            <table class="table datatable">
+                <thead>
+                    <tr>
 					<th>Codigo GMUD</th>
 					<th>Descricao</th>
 					<th>Fabrica</th>
 					<th>Sistema</th>
 					<th>Recurso</th>
 					<th>Data</th>
-				</tr>
-			  </thead>
-				<tbody>
-					<tr th:each="gmud : ${listagmud}">
-						<td><a th:href="${'/alterar/' + gmud.codigo}" href="#" th:text="${gmud.codigo}"></a></td>
+					</tr>
+                </thead>
+                <tbody>
+					<tr th:each="gmud : ${gmudlist}">
+						<td><a th:href="${'/cadastro/' + gmud.codigo}" href="#" th:text="${gmud.codigo}"></a></td>
 						<td th:text="${gmud.nome_gmud}"></td>
 						<td th:text="${gmud.fornecedor}"></td>
 						<td th:text="${gmud.sistema}"></td>
 						<td th:text="${gmud.recurso}"></td>
 						<td th:text="${gmud.data}"></td>
-					</tr>
-				</tbody>		
-			</table>
-		</div>
-		</form>
-	</div>
+                    </tr>
+                </tbody>
+            </table>
+       	</div>
+       	
+       	<!--  Abaixo temos a barra de navegação entre páginas -->
+                       
+            <div>
 
+				<nav th:if="${gmudlist.totalPages != 1}" class="form-group col-md-11 pagination-centered">
+				
+  					<ul class= "pagination  justify-content-center">
+    				
+	    				<li th:class="${gmudlist.number == 0} ? disabled">
+	    				 <a class="page-link" th:href="@{/consulta/(pageSize=${selectedPageSize}, page=${gmudlist.number})}" tabindex="-1">Anterior</a>
+					    </li>
+					    
+					    <li class="page-item"
+					    	th:class="${gmudlist.number == (page - 1)} ? 'active pointer-disabled'"
+					    	th:each="page : ${#numbers.sequence(pager.startPage, pager.endPage)}">
+					    	
+					    	<a class="page-link" 
+					    	th:href="@{/consulta/(pageSize=${selectedPageSize}, page=${page})}"
+	                        th:text="${page}"></a>
+	               	    </li>
+					       
+					    <li class="page-item" th:class="${gmudlist.number + 1 == gmudlist.totalPages} ? disabled">
+					      <a class="page-link" th:href="@{/consulta/(pageSize=${selectedPageSize}, page=${gmudlist.number + 2})}">Proxima</a>
+					    </li>
+					    
+				  </ul>
+				  
+				</nav>
+            </div>
+       	       	
+    </div>
   </body>
 
 </html>

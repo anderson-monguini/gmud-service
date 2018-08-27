@@ -5,12 +5,13 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 
-@Table(name="tb_gmud")
 @Entity
 public class GmudModel {
 	
@@ -18,29 +19,39 @@ public class GmudModel {
 		
 	}
 	
+	@NotNull
+    @Min(99999)
 	@Id
 	@Column (name="id_gmud")
 	private Integer codigo;
-
+	
+	@Size(max = 50)
 	@Column (name="ds_gmud")
 	private String nome_gmud;
 	
+	@Size(max = 50)
 	@Column (name="ds_fornecedor")
 	private String fornecedor;
 	
+	@Size(max = 50)
 	@Column (name="ds_sistema")
 	private String sistema;
 	
+	@Size(max = 50)
 	@Column (name="ds_recurso")
 	private String recurso;
 	
 	@DateTimeFormat (pattern = "yyyy-MM-dd")
 	@Column (name="data_gmud")
 	private LocalDate data;
-	/**
-	@Column (name="fl_ativo")
-	private boolean ativo;
-	**/
+	
+	@Size(max = 50)
+	@Column (name="ds_gp")
+	private String gerenteprojeto;
+	
+	@Size(max = 255)
+	@Column (name="ds_observacoes")
+	private String observacoes;
 	
 	public Integer getCodigo() {
 		return codigo;
@@ -90,14 +101,20 @@ public class GmudModel {
 		this.data = data;
 	}
 
-	/**
-	public boolean isAtivo() {
-		return ativo;
+	public String getGerenteprojeto() {
+		return gerenteprojeto;
 	}
 
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
+	public void setGerenteprojeto(String gerenteprojeto) {
+		this.gerenteprojeto = gerenteprojeto;
 	}
-	**/
-	
+
+	public String getObservacoes() {
+		return observacoes;
+	}
+
+	public void setObservacoes(String observacoes) {
+		this.observacoes = observacoes;
+	}
+
 }

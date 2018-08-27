@@ -17,21 +17,27 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             
-            
             <li class="nav-item active">
-              <a class="nav-link" href="consulta">Consulta</a>
+              <a class="nav-link" href="/consulta">Consulta</a>
             </li>
+            
+            
+            <!--
             <li class="nav-item">
-              <a class="nav-link" href="cadastro">Cadastro
-              <span class="sr-only">(current)</span>
-              </a>
+              <a class="nav-link" href="cadastro">Cadastro</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Alterar</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Deletar</a>
-            </li>
+             -->
+            
+            <li class="nav-item dropdown">
+    			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
+			    <div class="dropdown-menu">
+				      <a class="dropdown-item" href="/cadastro">Gmuds</a>
+				      <a class="dropdown-item" href="/fornecedor">Fabrica</a>
+				      <a class="dropdown-item" href="/recurso">Recurso</a>
+				      <a class="dropdown-item" href="/sistema">Sistema</a>
+			    </div>
+			</li>
+          
           </ul>
         </div>
       </div>
@@ -41,7 +47,7 @@
 	
 	<div class="align-justify">
 	
-	<form class="border-class" th:object="${myVal}" th:action="@{/cadastrar}" method="post" input width="100%" >
+	<form class="border-class" th:object="${myVal}" th:action="@{/cadastrar}" method="post" input width="90%" >
 			
 		<h2>Inserir dados para cadastro	</h2>
 		<p></p>
@@ -57,12 +63,15 @@
      			<input th:field="*{nome_gmud}" type="text" id="nome_gmud" class="form-control">
    			</div>
   		</div>
-  			
+  		
+  		
   		<div class="row">
     		<div class= "form-group col-md-6" "col">
     			<label for="fornecedor">Fabrica:</label>
     			<input th:field="*{fornecedor}" type="text" id="fornecedor" class="form-control">
-    		</div>
+     		</div>
+     		
+        		
     		<div class= "form-group col-md-6" "col">
     			<label for="sistema">Sistema:</label>
      			<input th:field="*{sistema}" type="text" id="sistema" class="form-control">

@@ -24,8 +24,4 @@ public class ResponseModel {
 		return mensagem;
 	}
 
-	public void setMensagem(String mensagem) {
-		this.mensagem = mensagem;
-	}	
-	
 }
