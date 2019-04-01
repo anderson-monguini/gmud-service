@@ -3,23 +3,23 @@ package com.vivo.gmud.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.vivo.gmud.model.GmudModel;
 import com.vivo.gmud.repository.GmudRepository;
 
-@Controller
+@RestController
 public class CadastroController {
 	
 	@Autowired
 	private GmudRepository gmudRepository;
 	
-	/**Novo registro de GMUD **/
+	/**Novo registro de GMUD TESTE de GIT **/
 	
 	@PostMapping ("/cadastrar")
 	public ModelAndView salvarGmud (@Valid GmudModel gmud, BindingResult brGmud , ModelAndView request){
@@ -35,7 +35,6 @@ public class CadastroController {
 					return mav;
 				
 			}
-			
 			
 				this.gmudRepository.save(gmud);
 				
