@@ -10,11 +10,21 @@
 
   <head th:include="thymeleaf/cabecalho :: headerFragment">
       <meta charset="utf-8">
-      <title>Log in with your account</title>
-  </head>	
+      <title>Login</title>
+  </head>
   
+      <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+          </ul>
+        </div>
+      </div>
+    </nav>	
+   
   <body>
-
+  
     <div class="container">
       <form method="POST" action="${contextPath}/login" class="form-signin">
         <h2 class="form-heading">Log in</h2>
@@ -33,7 +43,8 @@
       </form>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+    <script src="${contextPath}/resources/static/jquery/jquery.min.js"></script>
+    <script src="${contextPath}/resources/static/bootstrap/js/bootstrap.min.js"></script>
+    
   </body>
 </html>
