@@ -21,7 +21,7 @@ public class GmudController {
 	@GetMapping("/menu")
 	public ModelAndView testemenu () {
 		
-	ModelAndView mav = new ModelAndView("menu");
+	ModelAndView mav = new ModelAndView("thymeleaf/menu");
 	
 	return mav;
 	
@@ -30,7 +30,7 @@ public class GmudController {
 	@GetMapping("/cadastro")
 	public ModelAndView testecadastro () {
 		
-	ModelAndView mav = new ModelAndView("cadastro");
+	ModelAndView mav = new ModelAndView("thymeleaf/cadastro");
 	
 	mav.addObject("myVal",new GmudModel());
 		
@@ -41,7 +41,7 @@ public class GmudController {
 	@GetMapping("/fornecedor")
 	public ModelAndView cadastrofornecedor () {
 		
-	ModelAndView mav = new ModelAndView("fornecedor");
+	ModelAndView mav = new ModelAndView("thymeleaf/fornecedor");
 	
 	mav.addObject("myFornecedor",new FornecedorModel());
 		
@@ -52,7 +52,7 @@ public class GmudController {
 	@GetMapping("/recurso")
 	public ModelAndView cadastrorecurso () {
 		
-	ModelAndView mav = new ModelAndView("recurso");
+	ModelAndView mav = new ModelAndView("thymeleaf/recurso");
 	
 	mav.addObject("myRecurso",new RecursoModel());
 		
@@ -63,9 +63,8 @@ public class GmudController {
 
 	@GetMapping("/sistema")
 	public ModelAndView cadastrosistema() {
-	
-		
-	ModelAndView mav = new ModelAndView("sistema");
+			
+	ModelAndView mav = new ModelAndView("thymeleaf/sistema");
 	
 	mav.addObject("mySistema",new SistemaModel());
 	

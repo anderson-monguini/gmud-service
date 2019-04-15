@@ -1,0 +1,12 @@
+version: '3'
+services:
+  java-gmud-teste:
+    image: openjdk:8u151-alpine3.7
+    volumes:
+      - /documentos/gmud-service/logs:/var/jenkins_home
+    command:
+      - "/usr/bin/java"
+      - "-jar"
+      - "tmp/gmud-service.jar"
+    ports:
+      - 8880:8095

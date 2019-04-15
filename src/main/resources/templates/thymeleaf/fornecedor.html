@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	
-	<head th:include="cabecalho :: headerFragment">
-    <title>Recurso</title>
+	<head th:include="thymeleaf/cabecalho :: headerFragment">
+    <title>Fornecedor</title>
     </head>
 
   <body>
@@ -20,12 +20,12 @@
             <li class="nav-item active">
               <a class="nav-link" href="/consulta">Consulta</a>
             </li>
-               
+                      
             <li class="nav-item dropdown">
     			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
 			    <div class="dropdown-menu">
 				      <a class="dropdown-item" href="/cadastro">Gmuds</a>
-				      <a class="dropdown-item" href="/fornecedor">Fornecedor</a>
+				      <a class="dropdown-item" href="/fornecedor">Fabrica</a>
 				      <a class="dropdown-item" href="/recurso">Recurso</a>
 				      <a class="dropdown-item" href="/sistema">Sistema</a>
 			    </div>
@@ -36,27 +36,27 @@
       </div>
     </nav>	
 
-	<!-- Page Content -->
+	<!-- Page Content-->
 	
 	<div class="container align-center" style="width:90%; margin-top:30px ">
 	
-	<h2>Cadastrar novo Recurso</h2>
+	<h2>Cadastrar nova Fabrica</h2>
 	
 	<div class="container align-middle" style="width:60%; border:1px solid #333; border-radius:23px; margin-top:30px ">
 	<p></p>
-	<form class="form-group justify-content-center" th:object="${myRecurso}" th:action="@{/recurso}" method="post">
+	<form class="form-group justify-content-center" th:object="${myFornecedor}" th:action="@{/fornecedor}" method="post">
 		
   		<div  class="form-row align-items-center">
     		
-    			<label for="fornecedor">Nome do Recurso DEV OSS:</label>
-    			<input th:field="*{nome_recurso}" type="text" id="nome_recurso" class="form-control">
+    			<label for="fornecedor">Nome Fabrica:</label>
+    			<input th:field="*{nome_fornecedor}" type="text" id="nome_fornecedor" class="form-control">
      		
   		</div>
   		
   		<div  class="form-row align-items-center">
     		
     			<label for="sistema">Telefone Contato:</label>
-     			<input th:field="*{contato_recurso}" type="text" id="contato_recurso" class="form-control">
+     			<input th:field="*{contato_plantao}" type="text" id="contato_plantao" class="form-control">
    		
    		</div>
    		<p></p>

@@ -25,7 +25,7 @@ public class CadastroController {
 	public ModelAndView salvarGmud (@Valid GmudModel gmud, BindingResult brGmud , ModelAndView request){
 		
 		try {
-				ModelAndView mav = new ModelAndView("cadastro");
+				ModelAndView mav = new ModelAndView("/cadastro");
 			
 				if (brGmud.hasErrors()) {
 					
@@ -45,7 +45,7 @@ public class CadastroController {
 				
 			}catch (Exception e) {
 				
-				ModelAndView mav = new ModelAndView("cadastro");
+				ModelAndView mav = new ModelAndView("/cadastro");
 				mav.addObject("error", "Temos um problema!!");
 				
 				mav.addObject("myVal", gmud);				
@@ -60,7 +60,7 @@ public class CadastroController {
 	@GetMapping ("/cadastro/{codigo}")
 	public ModelAndView editar (@PathVariable Integer codigo) {
 		
-		ModelAndView mav = new ModelAndView("cadastro");
+		ModelAndView mav = new ModelAndView("/cadastro");
 		
 		mav.addObject("myVal", gmudRepository.findById(codigo));
 		
