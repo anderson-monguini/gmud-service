@@ -5,7 +5,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 
   <head th:include="thymeleaf/cabecalho :: headerFragment">
@@ -13,7 +13,6 @@
       <title>Login</title>
   </head>
   
-      <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -38,13 +37,9 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-            <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
         </div>
       </form>
     </div>
 
-    <script src="${contextPath}/resources/static/jquery/jquery.min.js"></script>
-    <script src="${contextPath}/resources/static/bootstrap/js/bootstrap.min.js"></script>
-    
   </body>
 </html>

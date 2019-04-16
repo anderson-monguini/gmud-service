@@ -53,6 +53,7 @@ public class UserController {
         return "redirect:/menu";
     }
 
+    
     @GetMapping("/login")
     public String login(Model model, String error, String logout) {
         if (error != null)
@@ -63,17 +64,24 @@ public class UserController {
 
         return "jsp/login";
     }
+	
+    /*
+    @GetMapping("/login")
+	public ModelAndView login (Model model, String error, String logout) {
+	
+    	ModelAndView mav = new ModelAndView("thymeleaf/login");
+    	
+    	if (error != null)
+            model.addAttribute("error", "Your username and password is invalid.");
 
-    /*   
-    @RequestMapping(value="/logout", method = RequestMethod.GET)
-    public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null){    
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
-        return "redirect:/logout";
-    }
+        if (logout != null)
+            model.addAttribute("message", "You have been logged out successfully.");
+    	
+	return mav;
+	
+	}
 	*/
+
     
 	@GetMapping("/logout")
 	public ModelAndView logout (HttpServletRequest request, HttpServletResponse response) {
