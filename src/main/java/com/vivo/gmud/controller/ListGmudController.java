@@ -37,7 +37,7 @@ public class ListGmudController {
         	System.out.println("Teste mal sucedido");
         }
         
-		ModelAndView mav = new ModelAndView("thymeleaf/consulta");
+		ModelAndView mav = new ModelAndView("consulta");
                 
         int evalPageSize = pageSize.orElse(INITIAL_PAGE_SIZE);
         

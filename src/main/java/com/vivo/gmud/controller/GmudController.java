@@ -2,6 +2,7 @@ package com.vivo.gmud.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,7 +22,7 @@ public class GmudController {
 	@GetMapping("/menu")
 	public ModelAndView testemenu () {
 		
-	ModelAndView mav = new ModelAndView("thymeleaf/menu");
+	ModelAndView mav = new ModelAndView("/menu");
 	
 	return mav;
 	
@@ -30,7 +31,7 @@ public class GmudController {
 	@GetMapping("/cadastro")
 	public ModelAndView testecadastro () {
 		
-	ModelAndView mav = new ModelAndView("thymeleaf/cadastro");
+	ModelAndView mav = new ModelAndView("/cadastro");
 	
 	mav.addObject("myVal",new GmudModel());
 		
@@ -41,7 +42,7 @@ public class GmudController {
 	@GetMapping("/fornecedor")
 	public ModelAndView cadastrofornecedor () {
 		
-	ModelAndView mav = new ModelAndView("thymeleaf/fornecedor");
+	ModelAndView mav = new ModelAndView("/fornecedor");
 	
 	mav.addObject("myFornecedor",new FornecedorModel());
 		
@@ -52,7 +53,7 @@ public class GmudController {
 	@GetMapping("/recurso")
 	public ModelAndView cadastrorecurso () {
 		
-	ModelAndView mav = new ModelAndView("thymeleaf/recurso");
+	ModelAndView mav = new ModelAndView("/recurso");
 	
 	mav.addObject("myRecurso",new RecursoModel());
 		
@@ -64,7 +65,7 @@ public class GmudController {
 	@GetMapping("/sistema")
 	public ModelAndView cadastrosistema() {
 			
-	ModelAndView mav = new ModelAndView("thymeleaf/sistema");
+	ModelAndView mav = new ModelAndView("/sistema");
 	
 	mav.addObject("mySistema",new SistemaModel());
 	
@@ -73,5 +74,25 @@ public class GmudController {
 	return mav;
 	
 	}
+	
+	@GetMapping("/")
+    public String root() {
+        return "menu";
+    }
+
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
+    }
+
+    @GetMapping("/user")
+    public String userIndex() {
+        return "user/index";
+    }
+
+    @GetMapping("/logout")
+    public String logout() {
+        return "logout";
+    }
 
 }
