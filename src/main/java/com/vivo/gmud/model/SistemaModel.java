@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -24,8 +24,8 @@ public class SistemaModel {
 	private String nome_sistema;
 	
 	@NotNull
-	@JoinColumn (name = "nome_fornecedor")
-	@OneToOne
+	@JoinColumn 
+	@ManyToOne
 	private FornecedorModel fornecedorModel;
 	
 	/* Geters e Seters */

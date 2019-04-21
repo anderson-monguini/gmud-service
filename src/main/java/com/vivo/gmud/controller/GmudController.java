@@ -1,5 +1,7 @@
 package com.vivo.gmud.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,12 +31,15 @@ public class GmudController {
 	}
 	
 	@GetMapping("/cadastro")
-	public ModelAndView testecadastro () {
+	public ModelAndView testecadastro (Model model){
 		
 	ModelAndView mav = new ModelAndView("/cadastro");
 	
 	mav.addObject("myVal",new GmudModel());
-		
+	
+	List<FornecedorModel> fornecedores = fornecedorRepository.findAll();
+	model.addAttribute("fornecedores", fornecedores);
+	
 	return mav;
 	
 	}
@@ -63,13 +68,14 @@ public class GmudController {
 	
 
 	@GetMapping("/sistema")
-	public ModelAndView cadastrosistema() {
+	public ModelAndView cadastrosistema (Model model) {
 			
 	ModelAndView mav = new ModelAndView("/sistema");
 	
 	mav.addObject("mySistema",new SistemaModel());
 	
-	mav.addObject("listaFornecedor", fornecedorRepository.findAll());
+	List<FornecedorModel> fornecedores = fornecedorRepository.findAll();
+	model.addAttribute("fornecedores", fornecedores);
 	
 	return mav;
 	

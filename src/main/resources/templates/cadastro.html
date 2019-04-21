@@ -69,11 +69,24 @@
   		
   		
   		<div class="row">
-    		<div class= "form-group col-md-6" "col">
-    			<label for="fornecedor">Fabrica:</label>
-    			<input th:field="*{fornecedor}" type="text" id="fornecedor" class="form-control">
-     		</div>
-     		
+  			<!--Fazer daqui-->
+      		
+     		<div class= "form-group col-md-6" "col" th:object="${fornecedores}">
+     		<label for="sistema">Fábrica:</label>
+    			<select class="form-control" id="fornecedorModelOrder" name="fornecedorModelOrder">
+        			<option value="0">Selecione uma Fábrica</option>
+        			
+        			<option th:each="test : ${fornecedores}"
+                th:value="${test.id_fornecedor}"
+                th:text="${test.nome_fornecedor}"></option>
+                
+                <!-- Código + nome = th:text="${test.id_fornecedor}+' : '+${test.nome_fornecedor}" -->
+                
+    			</select>       			
+    			<small id="description" class="form-text text-muted">Selecionar a fábrica correta.</small>
+			</div> 
+   			    		
+     		<!-- Até Aqui -->
         		
     		<div class= "form-group col-md-6" "col">
     			<label for="sistema">Sistema:</label>

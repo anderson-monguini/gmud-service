@@ -58,16 +58,18 @@
   		
   		<p></p>
   		  		 	    	
-    	<div class="form-group">
-    		<label for="fornecedor">Fornecedor Sistema:</label>
-    		<select class="form-control" id="fornecedor" th:field="*{fornecedorModel}">
-	            <option value=""></option>
-	            		<option th:each="fornecedor : ${listaFornecedor}"
-	            		th:value="${fornecedor.getId_fonecedor()}"
-	            		th:utext="${fornecedor.getNome_fornecedor()}"
-	            		/>
-            </select>
-            <small id="description" class="form-text text-muted">Selecionar a fábrica correta para o Sistema</small>	
+    	<div class="form-group" th:object="${fornecedores}">
+      			<select class="form-control" id="fornecedorModelOrder" name="fornecedorModelOrder">
+        			<option value="0">Selecione uma Fábrica</option>
+        			
+        			<option th:each="test : ${fornecedores}"
+                th:value="${test.id_fornecedor}"
+                th:text="${test.nome_fornecedor}"></option>
+                
+                
+    			</select>       			
+    			<small id="description" class="form-text text-muted">Selecionar a fábrica correta.</small>
+			</div>   	
    		</div>
    	   		<button type="submit" class="btn btn-dark">Salvar Dados!</button> 			
 	</form>	

@@ -19,6 +19,7 @@ public class CadastroController {
 	@Autowired
 	private GmudRepository gmudRepository;
 	
+	
 	/**Novo registro de GMUD TESTE de GIT **/
 	
 	@PostMapping ("/cadastrar")
@@ -31,7 +32,7 @@ public class CadastroController {
 					
 					mav.addObject("critical", "Erro na validação do Código");
 					mav.addObject("myVal", gmud);
-				
+					
 					return mav;
 				
 			}
@@ -39,16 +40,16 @@ public class CadastroController {
 				this.gmudRepository.save(gmud);
 				
 				mav.addObject("success", "Cadastrado com Sucesso");
-				
-				mav.addObject("myVal", gmud);				
+				mav.addObject("myVal", gmud);
+											
 				return mav;
 				
 			}catch (Exception e) {
 				
 				ModelAndView mav = new ModelAndView("/cadastro");
 				mav.addObject("error", "Temos um problema!!");
+				mav.addObject("myVal", gmud);
 				
-				mav.addObject("myVal", gmud);				
 				return mav;
 			
 			}
