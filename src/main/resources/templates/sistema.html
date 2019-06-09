@@ -58,19 +58,17 @@
   		
   		<p></p>
   		  		 	    	
-    	<div class="form-group" th:object="${fornecedores}">
-      			<select class="form-control" id="fornecedorModelOrder" name="fornecedorModelOrder">
-        			<option value="0">Selecione uma Fábrica</option>
-        			
-        			<option th:each="test : ${fornecedores}"
-                th:value="${test.id_fornecedor}"
-                th:text="${test.nome_fornecedor}"></option>
-                
-                
-    			</select>       			
-    			<small id="description" class="form-text text-muted">Selecionar a fábrica correta.</small>
-			</div>   	
-   		</div>
+    	<div class="form-group">
+      		 
+      	<!--<select th:field="*{id_fornecedor}">	<select class="form-control" id="fornecedorModelOrder" name="fornecedorModelOrder"> -->
+      	
+      		<select th:field="*{fornecedorModel}" class="form-control" id="fornecedorModelOrder" name="fornecedorModelOrder">
+        	  <option th:each="fab : ${fornecedores}" th:value="${fab.id_fornecedor}" th:text="${fab.nome_fornecedor}"></option>
+            </select>
+           
+    		<small id="description" class="form-text text-muted">Selecionar a fábrica correta.</small>
+		</div>   	
+   	</div>
    	   		<button type="submit" class="btn btn-dark">Salvar Dados!</button> 			
 	</form>	
 	

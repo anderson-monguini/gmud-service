@@ -9,11 +9,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import lombok.Data;
+
+@Data
+
 @Entity
 public class SistemaModel {
 
-	public SistemaModel () {}
-	
 	@Id
  	@GeneratedValue(strategy= GenerationType.AUTO)
  	@Column (name="id_sistema")
@@ -24,10 +26,15 @@ public class SistemaModel {
 	private String nome_sistema;
 	
 	@NotNull
-	@JoinColumn 
 	@ManyToOne
+	@JoinColumn(name = "id_fornecedor")
 	private FornecedorModel fornecedorModel;
 	
+	public SistemaModel (String nome_sistema, FornecedorModel fornecedorModel) {
+		this.nome_sistema = nome_sistema;
+		this.fornecedorModel = fornecedorModel;		
+	}
+
 	/* Geters e Seters */
 
 	public Integer getId_sistema() {
@@ -38,14 +45,6 @@ public class SistemaModel {
 		this.id_sistema = id_sistema;
 	}
 
-	public FornecedorModel getFornecedorModel() {
-		return fornecedorModel;
-	}
-
-	public void setFornecedorModel(FornecedorModel fornecedorModel) {
-		this.fornecedorModel = fornecedorModel;
-	}
-
 	public String getNome_sistema() {
 		return nome_sistema;
 	}
@@ -53,5 +52,12 @@ public class SistemaModel {
 	public void setNome_sistema(String nome_sistema) {
 		this.nome_sistema = nome_sistema;
 	}
-	
+
+	public FornecedorModel getFornecedorModel() {
+		return fornecedorModel;
+	}
+
+	public void setFornecedorModel(FornecedorModel fornecedorModel) {
+		this.fornecedorModel = fornecedorModel;
+	}
 }

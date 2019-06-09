@@ -23,7 +23,7 @@ public class CadastroFornecedorController {
 	/**Nova Fábrica**/
 	
 	@PostMapping ("/fornecedor")
-	public ModelAndView salvarFornecedor (@Valid FornecedorModel fornecedor, BindingResult brFornecedor , ModelAndView request){
+	public ModelAndView salvarFornecedor (@Valid FornecedorModel fornecedor, BindingResult brFornecedor){
 	
 		
 		try {

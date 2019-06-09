@@ -67,45 +67,48 @@
    			</div>
   		</div>
   		
-  		
+  		<!--Fazer daqui-->
   		<div class="row">
-  			<!--Fazer daqui-->
-      		
-     		<div class= "form-group col-md-6" "col" th:object="${fornecedores}">
-     		<label for="sistema">Fábrica:</label>
-    			<select class="form-control" id="fornecedorModelOrder" name="fornecedorModelOrder">
-        			<option value="0">Selecione uma Fábrica</option>
-        			
-        			<option th:each="test : ${fornecedores}"
-                th:value="${test.id_fornecedor}"
-                th:text="${test.nome_fornecedor}"></option>
-                
-                <!-- Código + nome = th:text="${test.id_fornecedor}+' : '+${test.nome_fornecedor}" -->
-                
-    			</select>       			
-    			<small id="description" class="form-text text-muted">Selecionar a fábrica correta.</small>
+  			
+	     		<div class= "form-group col-md-6" "col">
+	     		<label for="sistema">Fábrica:</label>
+	     		
+	    		<select th:field="*{fornecedorModel}" class="form-control" id="fornecedorModelOrder" name="fornecedorModelOrder">
+			  <option th:each="fab : ${fornecedores}" th:value="${fab.id_fornecedor}" th:text="${fab.nome_fornecedor}"></option>
+		    	</select>
+		         			
+	    		<small id="description" class="form-text text-muted">Selecionar a fábrica correta.</small>
 			</div> 
-   			    		
-     		<!-- Até Aqui -->
-        		
-    		<div class= "form-group col-md-6" "col">
-    			<label for="sistema">Sistema:</label>
-     			<input th:field="*{sistema}" type="text" id="sistema" class="form-control">
-   			</div>
+   			        		
+	    		<div class= "form-group col-md-6" "col">
+	    		<label for="sistema">Sistema:</label>
+	    			
+	     		<select th:field="*{SistemaModel}" class="form-control" id="SistemaModelOrder" name="SistemaModelOrder">
+				<option th:each="siste : ${sistemas}" th:value="${siste.id_sistema}" th:text="${siste.nome_sistema}"></option>
+		    	</select>
+		         			
+	    		<small id="description" class="form-text text-muted">Selecionar o Sistema correto.</small>
+			</div>     			
+
   		</div>
-  		
+  		<!-- Até Aqui -->
+		<!--Fazer daqui-->
   		<div class="row">
-    		<div class= "form-group col-md-6" "col">
-    			<label for="recurso">Recurso:</label>
-    			<input th:field="*{recurso}" type="text" id="recurso" class="form-control">
-    		</div>
-    		 
-    		<div class= "form-group col-md-6" "col">
-    			<label for="data">Data:</label>
-     			<input th:value="*{data}" th:field="*{data}" type="date" id="data" class="form-control">
-   			</div>	
-   			 
-  		</div> 
+    		
+			<div class= "form-group col-md-6" "col">
+			<label for="recurso">Recurso:</label>
+			<select th:field="*{RecursoModel}" class="form-control" id="RecursoModelOrder" name="RecursoModelOrder">
+				<option th:each="rec : ${recursos}" th:value="${rec.id_recurso}" th:text="${rec.nome_recurso}"></option>
+			</select>
+			</div>
+		    		 
+			<div class= "form-group col-md-6" "col">
+			<label for="data">Data:</label>
+			<input th:value="*{data}" th:field="*{data}" type="date" id="data" class="form-control">
+			</div>	
+		
+		</div>
+ 		<!-- Até Aqui -->
   		   
 		<input type="submit" class="btn btn-dark"></input> 			
 	</form>

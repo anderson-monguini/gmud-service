@@ -49,7 +49,7 @@ public class GmudController {
 		
 	ModelAndView mav = new ModelAndView("/fornecedor");
 	
-	mav.addObject("myFornecedor",new FornecedorModel());
+	mav.addObject("myFornecedor",new FornecedorModel(null));
 		
 	return mav;
 	
@@ -72,7 +72,7 @@ public class GmudController {
 			
 	ModelAndView mav = new ModelAndView("/sistema");
 	
-	mav.addObject("mySistema",new SistemaModel());
+	mav.addObject("mySistema",new SistemaModel(null, null));
 	
 	List<FornecedorModel> fornecedores = fornecedorRepository.findAll();
 	model.addAttribute("fornecedores", fornecedores);

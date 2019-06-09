@@ -7,12 +7,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import lombok.Data;
+
+@Data
+
 @Entity
 public class FornecedorModel {
 	
 	public FornecedorModel () {
 		
-	}	
+	}
+	
 	@Id
  	@GeneratedValue(strategy= GenerationType.AUTO)
  	@Column (name="id_fornecedor")
@@ -25,16 +30,10 @@ public class FornecedorModel {
 	@Column (name ="contato_plantao")
 	private String contato_plantao;
 	
-	/*
-    @OneToMany(mappedBy = "fornecedorModel", cascade = CascadeType.ALL)
-    private Set<SistemaModel> sistemas;
-
-    public FornecedorModel(String name, FornecedorModel... sistemas) {
-        this.name = name;
-        this.sistemas = Stream.of(sistemas).collect(Collectors.toSet());
-        this.sistemas.forEach(x -> x.setFornecedorModel(this));
+	public FornecedorModel (String nome_fornecedor) {
+        this.nome_fornecedor = nome_fornecedor;
+        
     }
-	*/
 		
 	/* Geters e Seters */
 
@@ -49,6 +48,7 @@ public class FornecedorModel {
 	public String getNome_fornecedor() {
 		return nome_fornecedor;
 	}
+
 
 	public void setNome_fornecedor(String nome_fornecedor) {
 		this.nome_fornecedor = nome_fornecedor;

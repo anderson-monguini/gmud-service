@@ -23,6 +23,12 @@ public class RecursoModel {
 	
 	@Column (name ="contato_recurso")
 	private String contato_recurso;
+	
+	public RecursoModel (String nome_recurso) {
+        this.nome_recurso = nome_recurso;
+	}
+        
+    /* Geters e Seters */
 
 	public Integer getId_recurso() {
 		return id_recurso;

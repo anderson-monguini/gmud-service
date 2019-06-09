@@ -14,6 +14,6 @@ public interface FornecedorRepository extends Repository<FornecedorModel, Intege
  
 	public List<FornecedorModel> findAll();
 	
-	FornecedorModel findById(Integer id_fonecedor);
-			
+	FornecedorModel findById(Integer id_fornecedor);
+	
 }

@@ -21,7 +21,7 @@ public class CadastroSistemaController {
 	private SistemaRepository sistemaRepository;
 	
 	@PostMapping ("/sistema")
-	public ModelAndView salvarSistema (@Valid SistemaModel sistema, BindingResult brSistema , ModelAndView request) {
+public ModelAndView salvarSistema (@Valid SistemaModel sistema, BindingResult brSistema) {
 		
 		try {
 			ModelAndView mav = new ModelAndView("sistema");
